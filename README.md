@@ -19,8 +19,6 @@ EPOCHGUARD adds **external, auditable guardrails** around any frontier LLM acces
 - Comprehensive logging and metrics for compliance and debugging
 
 ## Architecture
-
-```mermaid
 flowchart TD
     A[Input Prompt] --> B[Mode & Threshold Check]
     B --> C[Layer 1: Hardened Regex]
