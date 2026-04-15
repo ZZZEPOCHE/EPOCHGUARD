@@ -1,10 +1,14 @@
 # EPOCHGUARD v1.0
 
-“EPOCHGUARD v1.0 is an educational and research-oriented LLM safety guardrail. It is provided as-is and should not be relied upon as a complete safety solution without additional human oversight."
-
 **Hybrid LLM Safety Middleware** — External control layers for frontier models using only public APIs.
 
+“EPOCHGUARD v1.0 is an educational and research-oriented LLM safety guardrail. It is provided as-is and should not be relied upon as a complete safety solution without additional human oversight."
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A production-grade guardrail service that combines classical filters, ML classifiers, and structured LLM judging to enforce safety, auditability, and operator control while preserving response quality.
+
+**License**: MIT License (see [LICENSE](LICENSE) file)
 
 Runs as both a **FastAPI async production endpoint** and an **interactive CLI** with conversation memory and heartbeat monitoring. Designed for AI labs, red/blue teaming, compliance workflows, and prompt engineering.
 
