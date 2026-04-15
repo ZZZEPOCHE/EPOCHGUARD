@@ -17,7 +17,7 @@ EPOCHGUARD adds **external, auditable guardrails** around any frontier LLM acces
 - Significant token savings through early rejection
 - Dynamic operator control via safety modes
 - Comprehensive logging and metrics for compliance and debugging
-
+  
 ## Architecture
 flowchart TD
     A[Input Prompt] --> B[Mode & Threshold Check]
