@@ -31,6 +31,7 @@ EPOCHGUARD adds **external, auditable guardrails** around any frontier LLM acces
     J --> K[Output Guard + Forensic Logging]
 
 All decisions include confidence scores and transparent layer-by-layer reasoning. Every request is fully logged in matrix format for forensic review.Features5-Layer Defense Pipeline:Hardened regex (prompt injection & common jailbreak patterns)
+
 Toxic-BERT classifier
 Pluggable enterprise guard
 xAI Grok structured JSON + enhanced Chain-of-Thought judge
@@ -63,7 +64,9 @@ Audit Trail Completeness
 100%
 PostgreSQL + matrix logs
 
-Quick StartInstallationbash
+Quick StartInstallation
+
+bash
 
 git clone https://github.com/zzzepoche/EPOCHGUARD.git
 cd EPOCHGUARD
@@ -73,7 +76,9 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
-Environment Variablesbash
+Environment Variables
+
+bash
 
 export XAI_API_KEY="xai-..."
 export DATABASE_URL="postgresql+asyncpg://user:pass@localhost:5432/epochguard"
@@ -86,7 +91,9 @@ FastAPI server available at http://localhost:8000
 Interactive CLI with [PROMPT]> prompt
 CLI commands: mode high/normal/low, stats, exit
 
-API Examplebash
+API Example
+
+bash
 
 curl -X POST "http://localhost:8000/guard" \
   -H "Content-Type: application/json" \
@@ -96,7 +103,8 @@ curl -X POST "http://localhost:8000/guard" \
     "session_id": "optional-uuid"
   }'
 
-Guard ModesMode
+Guard Modes
+Mode
 Strictness
 Best For
 High
@@ -109,12 +117,14 @@ Low
 Low
 Research / internal / creative
 
-Related ProjectsOUTER-LAYERS-LLMS — 8-stage invariant-driven outer governance pipeline with Univ-Onto-Guard-SR for ontological consistency and stealth violation detection.
+Related Projects: **OUTER-LAYERS-LLMS** — 8-stage invariant-driven outer governance pipeline with Univ-Onto-Guard-SR for ontological consistency and stealth violation detection.
 
-Compliance SupportEPOCHGUARD helps address:EU AI Act (risk management, logging, transparency)
+Compliance Support: **EPOCHGUARD** helps address:EU AI Act (risk management, logging, transparency)
 OWASP LLM Top 10
 NIST AI RMF
 GDPR data minimization principles
+
+---
 
 **Creation Date:** April 14, 2026  
 **Author:** ZZZ_EPOCHE + Grok  
