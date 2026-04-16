@@ -1,4 +1,4 @@
-# EPOCHGUARD v1.0
+# EPOCHGUARD
 
 **Hybrid LLM Safety Middleware** — External control layers for frontier models using only public APIs.
 
@@ -29,6 +29,15 @@ Rest of the World:
 Users bear full responsibility for local legal compliance.
 Static Release:
 This is a final frozen version. No further updates will be provided.
+Designed for AI labs, red/blue/purple teams, security researchers, and compliance teams.
+Intended Use Defensive safety research, artistic, technical, educational, and personal use only.
+
+**Code Name:** EPOCH-G
+**Version:** 1.0 (Static Release – April 2026)
+**Author:** ZZZ_EPOCHE
+**Date of Creation:** 2026-04-15 License: MIT
+**Copyright:** © ZZZ_EPOCHE (2026)
+**Maintenance:** Final release. No updates, patches, or support will be provided.
 
 Runs as both a **FastAPI async production endpoint** and an **interactive CLI** with conversation memory and heartbeat monitoring. Designed for AI labs, red/blue teaming, compliance workflows, and prompt engineering.
 
