@@ -7,8 +7,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A production-grade guardrail service that combines classical filters, ML classifiers, and structured LLM judging to enforce safety, auditability, and operator control while preserving response quality.
+## Legal Disclosure
+This is an independent open-source project.  
+**No affiliation or compensation exists** with xAI, Anthropic, Google, OpenAI or any AI laboratory.  
+The author owns the evaluated profile and repositories.  
+All analysis and code are based solely on publicly available tools and APIs.  
+This tool is released under the **MIT License** for defensive and research purposes only.  
+It is designed to detect and block harmful prompts, jailbreaks, and sensitive data leakage.  
+It is **not** intended to assist in creating attacks or bypassing safety systems.
 
+**WARNING: "This version is explicitly not intended for use in the European Union or EEA. It is not designed to meet EU AI Act or GDPR requirements. Any use in the EU/EEA is entirely at the user's own risk and responsibility."**
+
+Legal & Compliance 
+© ZZZ_EPOCHE
 **License**: MIT License (see [LICENSE](LICENSE) file)
+EU AI Act & GDPR:
+This edition includes EU safeguards (PII redaction, transparency notices, stricter thresholds). However, it is not certified as fully compliant. Users in the EU/EEA must perform their own conformity assessment and assume full liability. Users in the EU/EEA: Please ensure full regulatory compliance before deployment.
+USA:
+Users are solely responsible for compliance with all U.S. laws.
+Rest of the World:
+Users bear full responsibility for local legal compliance.
+Static Release:
+This is a final frozen version. No further updates will be provided.
 
 Runs as both a **FastAPI async production endpoint** and an **interactive CLI** with conversation memory and heartbeat monitoring. Designed for AI labs, red/blue teaming, compliance workflows, and prompt engineering.
 
