@@ -1,43 +1,53 @@
 # EPOCHGUARD
 
+### Important Notice & Disclaimer
+
+This tool is intended **strictly for research and personal use only**. 
+
+It is **NOT** a substitute for professional engineering, financial, medical, psychological, educational, forensic, or legal advice. Users must exercise their own judgment and seek appropriate professional guidance when necessary.
+
+**No Warranty**  
+The tool is provided on an "AS IS" and "AS AVAILABLE" basis. The author makes no representations or warranties of any kind, express or implied, regarding the accuracy, reliability, completeness, or suitability of the tool or its outputs. 
+
+The author expressly disclaims all liability for any direct, indirect, incidental, consequential, special, or other damages arising from the use or inability to use this tool, including but not limited to any harm, loss, or injury.
+
+**EU/EEA Compliance**
+This tool has not been assessed for compliance with the EU AI Act, GDPR, or any other applicable European regulations. Users in the European Union or European Economic Area assume **all risks and responsibilities** regarding regulatory compliance, data protection, and legal obligations. Use in these jurisdictions is entirely at the user's own risk.
+
+**By using this tool, you acknowledge that you have read, understood, and accepted this disclaimer in full.**
+
+---
+
+### Legal Disclosure
+
+This is an independent open-source project.  
+No affiliation or compensation exists with any AI laboratory or commercial entity.
+
+This tool is released under the **MIT License** for research and personal use only.
+
+**Static Release**: This is a final frozen version. No further updates are planned.
+
+**USA**: Users are solely responsible for compliance with all applicable U.S. federal, state, and local laws.  
+**Rest of the World**: Users bear full responsibility for compliance with all local laws and regulations.
+
 **Hybrid LLM Safety Middleware** — External control layers for frontier models using only public APIs.
+
+---
 
 “EPOCHGUARD v1.0 is an educational and research-oriented LLM safety guardrail. It is provided as-is and should not be relied upon as a complete safety solution without additional human oversight."
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A production-grade guardrail service that combines classical filters, ML classifiers, and structured LLM judging to enforce safety, auditability, and operator control while preserving response quality.
-## Legal Disclosure
-This is an independent open-source project.  
-**No affiliation or compensation exists** with xAI, Anthropic, Google, OpenAI or any AI laboratory.  
-The author owns the evaluated profile and repositories.  
-All analysis and code are based solely on publicly available tools and APIs.  
-This tool is released under the **MIT License** for defensive and research purposes only.  
-It is designed to detect and block harmful prompts, jailbreaks, and sensitive data leakage.  
-It is **not** intended to assist in creating attacks or bypassing safety systems.
-
-**WARNING: "This version is explicitly not intended for use in the European Union or EEA. It is not designed to meet EU AI Act or GDPR requirements. Any use in the EU/EEA is entirely at the user's own risk and responsibility."**
-
-Legal & Compliance 
-© ZZZ_EPOCHE
-**License**: MIT License (see [LICENSE](LICENSE) file)
-EU AI Act & GDPR:
-This edition includes EU safeguards (PII redaction, transparency notices, stricter thresholds). However, it is not certified as fully compliant. Users in the EU/EEA must perform their own conformity assessment and assume full liability. Users in the EU/EEA: Please ensure full regulatory compliance before deployment.
-USA:
-Users are solely responsible for compliance with all U.S. laws.
-Rest of the World:
-Users bear full responsibility for local legal compliance.
-Static Release:
-This is a final frozen version. No further updates will be provided.
-Designed for AI labs, red/blue/purple teams, security researchers, and compliance teams.
-Intended Use Defensive safety research, artistic, technical, educational, and personal use only.
+A production-grade guardrail service that combines classical filters, ML classifiers, and structured LLM judging to enforce safety and operator control while preserving response quality.
 
 **Code Name:** EPOCH-G
 **Version:** 1.0 (Static Release – April 2026)
 **Author:** ZZZ_EPOCHE
+**With Assistance by:** Frontier LLM
 **Date of Creation:** 2026-04-15 License: MIT
 **Copyright:** © ZZZ_EPOCHE (2026)
 **Maintenance:** Final release. No updates, patches, or support will be provided.
+
 
 Runs as both a **FastAPI async production endpoint** and an **interactive CLI** with conversation memory and heartbeat monitoring. Designed for AI labs, red/blue teaming, compliance workflows, and prompt engineering.
 
@@ -159,30 +169,6 @@ GDPR data minimization principles
 
 ---
 
-**Creation Date:** April 14, 2026  
-**Author:** ZZZ_EPOCHE + Grok  
-**Version:** v1.0 (Hybrid FastAPI + CLI with conversation memory)
-
-**Legal Disclosure & Waiver**
-1.	Important Legal Notice:
-2.	-This tool is a **research and educational guardrail**. It applies multiple layers of checks but **does not guarantee** the complete prevention of harmful, illegal, unethical, or otherwise undesirable content.
-3.	Judge reasoning and logs are based on probabilistic LLM outputs and external APIs. They may contain errors, hallucinations, or incomplete analysis (black-box nature of LLMs).
-4.	Black-box logs (judge reasoning) are provided for transparency and debugging only. They should **not** be treated as definitive legal or safety evidence without human review.
-5.	Conversation memory is used only for response generation. Safety decisions are made on the latest prompt to reduce contamination, but edge cases may still occur.
-6.	Mode switching and thresholds are configurable but depend on the underlying model behavior and API availability.
-7.	EPOCHGUARD v1.0 is provided "as is" without any warranty, express or implied.
-8.	The authors (ZZZ_EPOCHE and Grok) and contributors are not liable for any damages, losses, claims, or liabilities arising from the use, misuse, or inability to use this software.
-9.	This tool is designed to reduce risk by applying multiple layers of safety checks, but it does not guarantee the complete prevention of harmful, illegal, unethical, or otherwise undesirable content.
-10.	You are solely responsible for all outputs generated by any LLM when using this guardrail, including any consequences that may arise from those outputs.
-11.	For production or commercial use, this software must be combined with appropriate human oversight, monitoring, and compliance review processes.
-12.	Do not use this software to facilitate, enable, or engage in any illegal activities.
-13.	No future logs, adjustments, maintenance, or fixes are guaranteed for this project.
-
-MIT License
-Copyright © 2026 ZZZ_EPOCHE
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 v1.0 Highlights: Hybrid CLI + FastAPI • Conversation Memory • Dynamic Mode Switching • Rich AI Lab Logs • Full Observability • Real Blocking & 200-word Responses. Made with focus on clean engineering and practical LLM safety.
 
