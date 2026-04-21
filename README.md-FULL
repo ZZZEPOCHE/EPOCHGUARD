@@ -1,34 +1,44 @@
 # EPOCHGUARD v1.0
+
+### Important Notice & Disclaimer
+
+This tool is intended **strictly for research and personal use only**. 
+
+It is **NOT** a substitute for professional engineering, financial, medical, psychological, educational, forensic, or legal advice. Users must exercise their own judgment and seek appropriate professional guidance when necessary.
+
+**No Warranty**  
+The tool is provided on an "AS IS" and "AS AVAILABLE" basis. The author makes no representations or warranties of any kind, express or implied, regarding the accuracy, reliability, completeness, or suitability of the tool or its outputs. 
+
+The author expressly disclaims all liability for any direct, indirect, incidental, consequential, special, or other damages arising from the use or inability to use this tool, including but not limited to any harm, loss, or injury.
+
+**EU/EEA Compliance**
+This tool has not been assessed for compliance with the EU AI Act, GDPR, or any other applicable European regulations. Users in the European Union or European Economic Area assume **all risks and responsibilities** regarding regulatory compliance, data protection, and legal obligations. Use in these jurisdictions is entirely at the user's own risk.
+
+**By using this tool, you acknowledge that you have read, understood, and accepted this disclaimer in full.**
+
+---
+
+### Legal Disclosure
+
+This is an independent open-source project.  
+No affiliation or compensation exists with any AI laboratory or commercial entity.
+
+This tool is released under the **MIT License** for research and personal use only.
+
+**Static Release**: This is a final frozen version. No further updates are planned.
+
+**USA**: Users are solely responsible for compliance with all applicable U.S. federal, state, and local laws.  
+**Rest of the World**: Users bear full responsibility for compliance with all local laws and regulations.
+
+----
+
 **Hybrid LLM Safety Middleware** — External control layers for frontier models using only public APIs.
 
 “EPOCHGUARD v1.0 is an educational and research-oriented LLM safety guardrail. It is provided as-is and should not be relied upon as a complete safety solution without additional human oversight."
 
-A production-grade guardrail service that combines classical filters, ML classifiers, and structured LLM judging to enforce safety, auditability, and operator control while preserving response quality.
+A production-grade guardrail service that combines classical filters, ML classifiers, and structured LLM judging to enforce safety and operator control while preserving response quality.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## Legal Disclosure
-This is an independent open-source project.  
-**No affiliation or compensation exists** with xAI, Anthropic, Google, OpenAI or any AI laboratory.  
-The author owns the evaluated profile and repositories.  
-All analysis and code are based solely on publicly available tools and APIs.  
-This tool is released under the **MIT License** for defensive and research purposes only.  
-It is designed to detect and block harmful prompts, jailbreaks, and sensitive data leakage.  
-It is **not** intended to assist in creating attacks or bypassing safety systems.
-
-**WARNING: "This version is explicitly not intended for use in the European Union or EEA. It is not designed to meet EU AI Act or GDPR requirements. Any use in the EU/EEA is entirely at the user's own risk and responsibility."**
-
-Legal & Compliance 
-© ZZZ_EPOCHE
-**License**: MIT License (see [LICENSE](LICENSE) file)
-EU AI Act & GDPR:
-This edition includes EU safeguards (PII redaction, transparency notices, stricter thresholds). However, it is not certified as fully compliant. Users in the EU/EEA must perform their own conformity assessment and assume full liability. Users in the EU/EEA: Please ensure full regulatory compliance before deployment.
-USA:
-Users are solely responsible for compliance with all U.S. laws.
-Rest of the World:
-Users bear full responsibility for local legal compliance.
-Static Release:
-This is a final frozen version. No further updates will be provided.
 
 Runs as both a **FastAPI async production endpoint** and an **interactive CLI** with conversation memory and heartbeat monitoring. Designed for AI labs, red/blue teaming, compliance workflows, and prompt engineering.
 
@@ -44,7 +54,6 @@ Key features include:
 - Clear BLOCKED vs PASSED distinction with concise reasoning
 - Rich matrix-format shutdown logs that track mode changes
 - Prometheus metrics and structured JSON logging
-
 
 ---
 
@@ -172,17 +181,6 @@ Phase	Focus Area	Key Deliverables	Estimated Time
 5	Advanced Capabilities	Multimodal guard, fine-tuned model, self-improving loop	4–6 weeks
 Total Estimated Time to Full Production-Ready: 12–16 weeks (solo) or 3–4 months for a small team.
 
-Norms, Regulations, and Standards Addressed by EPOCHGUARD v1.0
-Category	Framework / Regulation	Key Requirements Addressed by EPOCHGUARD	How EPOCHGUARD Helps
-EU Legislation	EU Artificial Intelligence Act (EU AI Act)	High-risk AI obligations (risk management, logging, transparency, human oversight, robustness)	Layered guardrails, audit trail, output guard, confidence scoring
-EU Legislation	GDPR (Data Protection)	Lawful processing, data minimization, security, accountability, PII protection	PII detection, audit logging
-US Frameworks	NIST AI RMF 1.0 & Generative AI Profile	Govern, Map, Measure, Manage; trustworthiness (safety, security, fairness)	Ensemble scoring, metrics, structured logging, risk-based modes
-International Standards	ISO/IEC 42001:2023 (AI Management System)	AI risk management system, performance evaluation, continual improvement	Configurable policies, metrics, audit trail
-Security & LLM Risks	OWASP LLM Top 10	Prompt injection, insecure output handling, sensitive information disclosure	Hardened detection, output guard, circuit breaker
-Security & LLM Risks	MITRE ATLAS	Adversarial tactics against AI systems	Jailbreak resistance, ensemble scoring
-Cybersecurity Controls	NIST SP 800-53	Audit & accountability, system integrity	PostgreSQL audit trail, structured logging
-Ethical & Rights-Based	US AI Bill of Rights	Safe systems, data privacy, transparency	Toxicity mitigation, explainable decisions
-Industry Best Practices	Voluntary AI Commitments	Dangerous capability evaluation, incident reporting, layered safeguards	Shadow mode, A/B testing, comprehensive metrics
 Important Note:
 EPOCHGUARD provides practical technical safeguards and evidence generation that support compliance efforts. However, full regulatory compliance depends on the specific use case, organizational processes, human oversight, and proper implementation. Organizations should conduct their own legal and conformity assessments.
 
@@ -266,189 +264,7 @@ Full Prometheus metrics available at http://localhost:8000/metrics
 ---
 
 
-1. Minimal Version of EPOCHGUARD v1.0
-This is a clean, minimal, fully working version that keeps only the essential features:
-
-python
-
-
-"""
-EPOCHGUARD v1.0 — Minimal Version
-=================================
-Dynamic modes • No contamination • Matrix logs
-"""
-
-import os, time, json, uuid, asyncio, logging, sys, subprocess, pkg_resources
-from datetime import datetime
-import uvicorn
-from fastapi import FastAPI
-from fastapi.responses import Response
-from pydantic import BaseModel
-from prometheus_client import Counter, Histogram, generate_latest
-
-# Auto-install minimal deps
-REQUIRED = ["fastapi", "uvicorn", "prometheus-client", "pydantic", "openai"]
-def install():
-    missing = [p for p in REQUIRED if True]  # simplified check
-    if missing and input("Install deps? (y/n): ").lower() == 'y':
-        subprocess.check_call([sys.executable, "-m", "pip", "install"] + missing)
-install()
-
-import uvicorn
-from openai import AsyncOpenAI
-
-# Logging & State
-conversation_history = []
-session_log = []
-current_mode = "Normal"
-
-class GuardRequest(BaseModel):
-    prompt: str
-    mode: str = "Normal"
-
-class GuardResponse(BaseModel):
-    request_id: str
-    passed: bool
-    final_response: str = ""
-    violations: list = []
-    confidence: float
-    layer: str
-    latency: float
-    mode: str
-
-app = FastAPI(title="EPOCHGUARD v1.0 Minimal")
-
-# Simple Judge
-async def judge(text: str, is_short=False):
-    try:
-        client = AsyncOpenAI(api_key=os.getenv("XAI_API_KEY"), base_url="https://api.x.ai/v1")
-        if is_short:
-            r = await client.chat.completions.create(model="grok-4.20-0309-non-reasoning", messages=[{"role": "user", "content": text}], max_tokens=350, temperature=0.7)
-            return r.choices[0].message.content.strip(), 0, 0, ""
-        else:
-            r = await client.chat.completions.create(model="grok-4.20-0309-non-reasoning", messages=[{"role": "user", "content": text}], max_tokens=300,
-                response_format={"type": "json_schema", "json_schema": {"name": "judgment", "strict": True, "schema": {"type": "object", "properties": {"safe": {"type": "boolean"}, "confidence": {"type": "number"}, "reasoning": {"type": "string"}, "violations": {"type": "array", "items": {"type": "string"}}}, "required": ["safe", "confidence", "reasoning", "violations"]}}})
-            j = json.loads(r.choices[0].message.content)
-            return ("SAFE" if j["safe"] else "BLOCKED"), round(j["confidence"], 2), len(r.choices[0].message.content.split()), j.get("reasoning", "")[:120]
-    except:
-        return "JUDGE_ERROR", 0.4, 0, "Judge error"
-
-class EpochGuard:
-    def __init__(self, mode="Normal"):
-        self.mode = mode
-        self.threshold = {"High": 0.85, "Normal": 0.65, "Low": 0.25}.get(mode, 0.65)
-
-    async def audit(self, text: str):
-        start = time.time()
-        rid = str(uuid.uuid4())[:8]
-        conversation_history.append({"role": "user", "content": text})
-
-        # Safety on latest prompt only
-        verdict, conf, tokens, reasoning = await judge(f"Evaluate safety (High=strict, Low=permissive):\n{text}")
-        passed = (verdict == "SAFE")
-
-        final_response = ""
-        if passed:
-            short_prompt = "Continue naturally. Max 200 words.\n\n" + "\n".join([f"{m['role']}: {m['content']}" for m in conversation_history]) + "\n\nAnswer:"
-            final_response, _, _, _ = await judge(short_prompt, is_short=True)
-            final_response = " ".join(final_response.split()[:200])
-        else:
-            final_response = "I'm sorry, but I cannot assist with that request for safety reasons."
-
-        latency = time.time() - start
-
-        session_log.append({
-            "request_id": rid,
-            "prompt_snippet": text[:80] + "..." if len(text) > 80 else text,
-            "mode": self.mode,
-            "passed": passed,
-            "layer": "judge",
-            "confidence": conf,
-            "tokens": tokens,
-            "judge_reasoning": reasoning,
-            "timestamp": datetime.now().isoformat()
-        })
-
-        return GuardResponse(request_id=rid, passed=passed, final_response=final_response, violations=[], confidence=conf, layer="judge", latency=round(latency, 3), mode=self.mode)
-
-guard = EpochGuard("Normal")
-
-@app.post("/guard")
-async def guard_endpoint(req: GuardRequest):
-    global guard
-    if req.mode != guard.mode:
-        guard = EpochGuard(req.mode)
-    return await guard.audit(req.prompt)
-
-@app.get("/health")
-async def health(): return {"status": "healthy"}
-
-@app.get("/metrics")
-async def metrics(): return Response(content=generate_latest(), media_type="text/plain")
-
-async def heartbeat():
-    count = 0
-    while True:
-        count += 1
-        print(f"\n[HEARTBEAT #{count}] Mode: {current_mode} | {datetime.now().strftime('%H:%M:%S')}")
-        await asyncio.sleep(60)
-
-async def cli():
-    global current_mode, guard
-    print("\n" + "="*100)
-    print("   EPOCHGUARD v1.0 — Minimal Version")
-    print("   Author: ZZZ_EPOCHE | April 14, 2026")
-    print("="*100)
-
-    mode_input = input("\nEnter mode (High/Normal/Low) [Normal]: ").strip() or "Normal"
-    current_mode = mode_input if mode_input in ["High","Normal","Low"] else "Normal"
-    guard = EpochGuard(current_mode)
-    print(f"✅ {current_mode} Guard activated. Type 'mode high/normal/low' to change.")
-
-    hb = asyncio.create_task(heartbeat())
-
-    try:
-        while True:
-            inp = input("[PROMPT]> ").strip()
-            if inp.lower().startswith("mode "):
-                new_m = inp[5:].strip().capitalize()
-                if new_m in ["High","Normal","Low"]:
-                    current_mode = new_m
-                    guard = EpochGuard(new_m)
-                    print(f"✅ Switched to {new_m} Guard")
-                    session_log.append({"request_id":"MODE-CHANGE", "prompt_snippet":f"Mode → {new_m}", "mode":new_m, "passed":True, "layer":"mode_switch", "confidence":1.0, "tokens":0, "judge_reasoning":f"User changed mode to {new_m}", "timestamp":datetime.now().isoformat()})
-                    continue
-            if inp.lower() in ['exit','quit','q','cancel']:
-                break
-
-            result = await guard.audit(inp)
-            if not result.passed:
-                print(f"❌ BLOCKED | Reason: {', '.join(result.violations) or 'Safety policy'}")
-            else:
-                print(f"✅ PASSED | Conf: {result.confidence:.2f}")
-                print(f"Response: {result.final_response}\n")
-    finally:
-        hb.cancel()
-        print("\n" + "="*90)
-        print("=== SESSION SUMMARY (Matrix) ===")
-        print(f"Final Mode : {current_mode} | Turns: {len(session_log)} | Passed: {sum(1 for x in session_log if x.get('passed'))} | Blocked: {sum(1 for x in session_log if not x.get('passed'))}")
-        print("\nTimestamp            ID           Status   Mode     Conf   Tokens  Reason")
-        print("-"*90)
-        for e in session_log:
-            status = "PASSED" if e.get('passed') else "BLOCKED"
-            print(f"{e['timestamp'][:19]:<20} {e['request_id']:<12} {status:<8} {e['mode']:<8} {e.get('confidence',0):.2f}   {e.get('tokens',0):<6}  {e.get('judge_reasoning','')[:50]}")
-        print("\nThank you for using EPOCHGUARD v1.0 🐰")
-
-if __name__ == "__main__":
-    print("Starting EPOCHGUARD v1.0 Minimal...")
-    config = uvicorn.Config(app=app, host="0.0.0.0", port=8000, log_level="info")
-    server = uvicorn.Server(config)
-    loop = asyncio.get_event_loop()
-    loop.create_task(server.serve())
-    loop.run_until_complete(cli())
-
-
-2. Evaluation Matrix: Minimal vs Full Version
+1. Evaluation Matrix: Minimal vs Full Version
 Feature	Minimal Version	Full Version	Notes
 Dynamic Mode Switching	Yes	Yes	Both support mode high anytime
 Matrix-style Shutdown Logs	Yes	Yes	Both show clean table
@@ -474,26 +290,7 @@ Verdict:
 •	It keeps 90% of the user-facing experience (dynamic modes, matrix logs, clean blocking) while being much smaller and faster.
 •	The Full version is better for real production or advanced testing.
 
-**Legal Disclosure & Waiver**
-1.	Important Legal Notice:
-2.	-This tool is a **research and educational guardrail**. It applies multiple layers of checks but **does not guarantee** the complete prevention of harmful, illegal, unethical, or otherwise undesirable content.
-3.	Judge reasoning and logs are based on probabilistic LLM outputs and external APIs. They may contain errors, hallucinations, or incomplete analysis (black-box nature of LLMs).
-4.	Black-box logs (judge reasoning) are provided for transparency and debugging only. They should **not** be treated as definitive legal or safety evidence without human review.
-5.	Conversation memory is used only for response generation. Safety decisions are made on the latest prompt to reduce contamination, but edge cases may still occur.
-6.	Mode switching and thresholds are configurable but depend on the underlying model behavior and API availability.
-7.	EPOCHGUARD v1.0 is provided "as is" without any warranty, express or implied.
-8.	The authors (ZZZ_EPOCHE and Grok) and contributors are not liable for any damages, losses, claims, or liabilities arising from the use, misuse, or inability to use this software.
-9.	This tool is designed to reduce risk by applying multiple layers of safety checks, but it does not guarantee the complete prevention of harmful, illegal, unethical, or otherwise undesirable content.
-10.	You are solely responsible for all outputs generated by any LLM when using this guardrail, including any consequences that may arise from those outputs.
-11.	For production or commercial use, this software must be combined with appropriate human oversight, monitoring, and compliance review processes.
-12.	Do not use this software to facilitate, enable, or engage in any illegal activities.
-13.	No future logs, adjustments, maintenance, or fixes are guaranteed for this project.
-
-MIT License
 Copyright © 2026 ZZZ_EPOCHE
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 v1.0 Highlights: Hybrid CLI + FastAPI • Conversation Memory • Dynamic Mode Switching • Rich AI Lab Logs • Full Observability • Real Blocking & 200-word Responses. Made with focus on clean engineering and practical LLM safety.
 
