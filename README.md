@@ -30,11 +30,13 @@ This tool is released under the **MIT License** for research and personal use on
 **USA**: Users are solely responsible for compliance with all applicable U.S. federal, state, and local laws.  
 **Rest of the World**: Users bear full responsibility for compliance with all local laws and regulations.
 
-**Hybrid LLM Safety Middleware** — External control layers for frontier models using only public APIs.
-
 ---
 
+**Hybrid LLM Safety Middleware** — External control layers for frontier models using only public APIs.
+
 “EPOCHGUARD v1.0 is an educational and research-oriented LLM safety guardrail. It is provided as-is and should not be relied upon as a complete safety solution without additional human oversight."
+
+v1.0 Highlights: Hybrid CLI + FastAPI • Conversation Memory • Dynamic Mode Switching • Rich AI Lab Logs • Full Observability • Real Blocking & 200-word Responses. Made with focus on clean engineering and practical LLM safety.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -162,13 +164,5 @@ Research / internal / creative
 
 Related Projects: **OUTER-LAYERS-LLMS** — 8-stage invariant-driven outer governance pipeline with Univ-Onto-Guard-SR for ontological consistency and stealth violation detection.
 
-Compliance Support: **EPOCHGUARD** helps address:EU AI Act (risk management, logging, transparency)
-OWASP LLM Top 10
-NIST AI RMF
-GDPR data minimization principles
-
 ---
-
-
-v1.0 Highlights: Hybrid CLI + FastAPI • Conversation Memory • Dynamic Mode Switching • Rich AI Lab Logs • Full Observability • Real Blocking & 200-word Responses. Made with focus on clean engineering and practical LLM safety.
 
