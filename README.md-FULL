@@ -42,7 +42,7 @@ A production-grade guardrail service that combines classical filters, ML classif
 
 Runs as both a **FastAPI async production endpoint** and an **interactive CLI** with conversation memory and heartbeat monitoring. Designed for AI labs, red/blue teaming, compliance workflows, and prompt engineering.
 
-**Author:** ZZZ_EPOCHE + Grok  
+**Author:** ZZZ_EPOCHE + LLM  
 **Version:** v1.0 (Hybrid FastAPI + CLI with conversation memory)
 **Date of Creation:** April 14, 2026  
 
@@ -50,7 +50,7 @@ Key features include:
 - Dynamic guard mode switching (High / Normal / Low) at any time
 - Safety evaluation on the latest prompt only (prevents context contamination)
 - Conversation memory for generating natural follow-up responses
-- Multi-layer defense: hardened regex, Toxic-BERT classifier, and structured JSON judge via xAI Grok
+- Multi-layer defense: hardened regex, Toxic-BERT classifier, and structured JSON judge via  LLM
 - Clear BLOCKED vs PASSED distinction with concise reasoning
 - Rich matrix-format shutdown logs that track mode changes
 - Prometheus metrics and structured JSON logging
@@ -99,7 +99,7 @@ pip install fastapi uvicorn prometheus-client sqlalchemy[asyncio] asyncpg pydant
 bash
 
 
-export XAI_API_KEY="your_xai_key"
+export _API_KEY="your__key"
 export DATABASE_URL="postgresql+asyncpg://postgres:password@localhost:5432/epochguard"
 export ENTERPRISE_GUARD_PROVIDER="local"
 
@@ -200,7 +200,7 @@ observability
 prometheus-metrics
 conversation-memory
 structured-logging
-xai-grok
+-LLM
 toxic-bert
 ai-alignment
 enterprise-guardrail
