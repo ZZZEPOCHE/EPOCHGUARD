@@ -68,7 +68,7 @@ EPOCHGUARD adds **external, auditable guardrails** around any frontier LLM acces
     B --> C[Layer 1: Hardened Regex]
     C --> D[Layer 2: Toxic-BERT Classifier]
     D --> E[Layer 3: Pluggable Guard]
-    E --> F[Layer 4: xAI Grok CoT Judge]
+    E --> F[Layer 4: LLM CoT Judge]
     F --> G[Layer 5: Ensemble Scoring]
     G --> H{Decision: Block / Escalate / Modify / Pass}
     H -->|Block or Escalate| I[Return Blocked Response + Reasoning]
@@ -79,7 +79,7 @@ All decisions include confidence scores and transparent layer-by-layer reasoning
 
 Toxic-BERT classifier
 Pluggable enterprise guard
-xAI Grok structured JSON + enhanced Chain-of-Thought judge
+LLM structured JSON + enhanced Chain-of-Thought judge
 Ensemble scoring engine
 
 Dynamic safety modes: High (strict), Normal (balanced), Low (permissive) — switchable at runtime or per request
@@ -104,7 +104,7 @@ Token Savings (early reject)
 Significant cost reduction
 Average Latency
 800–1800 ms
-Includes full Grok judge
+Includes full LLM judge
 Audit Trail Completeness
 100%
 PostgreSQL + matrix logs
@@ -125,7 +125,7 @@ Environment Variables
 
 bash
 
-export XAI_API_KEY="xai-..."
+export LLM_API_KEY="LLM-..."
 export DATABASE_URL="postgresql+asyncpg://user:pass@localhost:5432/epochguard"
 
 Run Hybrid Mode (CLI + FastAPI)bash
